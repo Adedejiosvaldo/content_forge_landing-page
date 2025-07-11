@@ -1,4 +1,16 @@
+"use client";
+import { Button } from "@heroui/button";
+import {
+  Avatar,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  Chip,
+} from "@heroui/react";
+import { Icon } from "@iconify/react";
 import React from "react";
+import { AcmeIcon } from "./social";
 
 const Features = () => {
   return (
@@ -7,83 +19,108 @@ const Features = () => {
       className="w-full py-14 bg-gradient-to-b from-[var(--background)] to-[var(--background)]/95 relative overflow-hidden"
     >
       {/* Background decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[var(--primary-color)]/20 to-transparent"></div>
-      <div className="absolute top-40 right-10 w-72 h-72 rounded-full bg-[var(--primary-color)]/5 filter blur-[80px] animate-float-delay"></div>
-      <div className="absolute bottom-20 left-10 w-80 h-80 rounded-full bg-[var(--accent-color)]/5 filter blur-[100px] animate-pulse-slow"></div>
 
-      <div className="container mx-auto px-6 max-w-6xl relative z-10">
-        <div className="text-center mb-20">
-          <div className="inline-block mb-3">
-            <span className="bg-[var(--primary-color)]/10 p-5 border border-[var(--primary-color)]/20 text-[var(--text-color)] text-sm font-medium py-1 px-3 rounded-full">
-              Why Choose Us
-            </span>
-          </div>
-          <h2 className="text-3xl md:text-5xl font-bold text-[var(--text-color)] mb-6 relative">
-            <span className="relative inline-block">
-              Why ContentCraft?
-              <svg
-                className="absolute -bottom-2 left-0 w-full h-2 text-[var(--primary-color)]/20"
-                viewBox="0 0 300 12"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M0,0 C75,12 125,12 200,6 C250,0 275,6 300,12 L300,12 L0,12 Z"
-                  fill="currentColor"
-                ></path>
-              </svg>
-            </span>
+      <div className="container mx-auto px-4 max-w-6xl relative z-10">
+        <div className="text-center mb-14">
+          <Button
+            className="h-9 overflow-hidden border-2 border-default-100 bg-default-50 px-[18px] py-2 text-small font-normal leading-5 text-default-700"
+            radius="full"
+            variant="bordered"
+          >
+            Why Choose Us
+          </Button>
+          <h2 className="mt-4 text-3xl md:text-5xl font-bold text-default-700 mb-6 relative">
+            Our Features
           </h2>
-          <p className="text-xl text-[var(--text-light)] max-w-3xl mx-auto">
-            Everything you need to grow your brand and save time
-          </p>
         </div>
 
-        {/* Feature cards with improved design */}
+        {/* Feature cards using HeroUI Card components */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
-          {/* Feature 1 - Lightning Fast */}
-          <div className="group relative">
-            <div className="absolute inset-0.5 bg-gradient-to-br from-[var(--primary-color)]/20 to-[var(--accent-color)]/20 rounded-2xl blur opacity-70 group-hover:opacity-100 transition duration-500"></div>
-            <div className="glass backdrop-blur-sm bg-[var(--card-bg)]/60 rounded-2xl p-8 border border-[var(--border-color)] shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 relative">
-              <h3 className="text-2xl font-bold mb-4 text-[var(--text-color)] group-hover:text-zinc-400 transition duration-300">
-                Instant Results
-              </h3>
-              <p className="text-[var(--text-light)] group-hover:text-[var(--text-color)] transition-colors duration-300">
+          {/* Feature 1 - Instant Results */}
+          <Card
+            className="max-w-[320px] border-small border-default-100 p-3"
+            shadow="sm"
+          >
+            <CardBody className="px-4 pb-1">
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex max-w-[80%] flex-col gap-1">
+                  <p className="text-medium font-medium">Instant Results</p>
+                  {/* <p className="text-small text-default-500">By ContentCraft</p> */}
+                </div>
+              </div>
+              <p className="pt-4 text-small text-default-500">
                 Generate ready-to-post content in seconds. No more waiting—just
                 click, copy, and share. ContentCraft delivers high-quality
                 results instantly, so you never miss a trend.
               </p>
-            </div>
-          </div>
+            </CardBody>
+            <CardFooter className="justify-between gap-2">
+              {/* <Button size="sm" variant="faded">
+                Try Now
+              </Button> */}
+              <Chip color="primary" variant="dot">
+                AI Powered
+              </Chip>
+            </CardFooter>
+          </Card>
 
-          {/* Feature 2 - Smart & Intuitive */}
-          <div className="group relative mt-6 md:mt-0">
-            <div className="absolute inset-0.5 bg-gradient-to-br from-[var(--primary-color)]/20 to-[var(--accent-color)]/20 rounded-2xl blur opacity-70 group-hover:opacity-100 transition duration-500"></div>
-            <div className="glass backdrop-blur-sm bg-[var(--card-bg)]/60 rounded-2xl p-8 border border-[var(--border-color)] shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 relative">
-              <h3 className="text-2xl font-bold mb-4 text-[var(--text-color)] group-hover:text-zinc-400 transition duration-300">
-                AI That Understands You
-              </h3>
-              <p className="text-[var(--text-light)] group-hover:text-[var(--text-color)] transition-colors duration-300">
+          {/* Feature 2 - AI That Understands You */}
+          <Card
+            className="max-w-[320px] border-small border-default-100 p-3"
+            shadow="sm"
+          >
+            <CardBody className="px-4 pb-1">
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex max-w-[80%] flex-col gap-1">
+                  <p className="text-medium font-medium">
+                    AI That Understands You
+                  </p>
+                  {/* <p className="text-small text-default-500">By ContentCraft</p> */}
+                </div>
+              </div>
+              <p className="pt-4 text-small text-default-500">
                 ContentCraft learns your brand voice and adapts to your style.
                 Get tailored suggestions and platform-optimised posts that
                 resonate with your audience—every single time.
               </p>
-            </div>
-          </div>
+            </CardBody>
+            <CardFooter className="justify-between gap-2">
+              {/* <Button size="sm" variant="faded">
+                Learn More
+              </Button> */}
+              <Chip color="secondary" variant="dot">
+                Smart AI
+              </Chip>
+            </CardFooter>
+          </Card>
 
-          {/* Feature 3 - Beautifully Designed */}
-          <div className="group relative mt-6 md:mt-12 lg:mt-0">
-            <div className="absolute inset-0.5 bg-gradient-to-br from-[var(--primary-color)]/20 to-[var(--accent-color)]/20 rounded-2xl blur opacity-70 group-hover:opacity-100 transition duration-500"></div>
-            <div className="glass backdrop-blur-sm bg-[var(--card-bg)]/60 rounded-2xl p-8 border border-[var(--border-color)] shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 relative">
-              <h3 className="text-2xl font-bold mb-4 text-[var(--text-color)] group-hover:text-zinc-400 transition duration-300">
-                Effortless & Beautiful
-              </h3>
-              <p className="text-[var(--text-light)] transition-colors duration-300">
+          {/* Feature 3 - Effortless & Beautiful */}
+          <Card
+            className="max-w-[320px] border-small border-default-100 p-3"
+            shadow="sm"
+          >
+            <CardBody className="px-4 pb-1">
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex max-w-[80%] flex-col gap-1">
+                  <p className="text-medium font-medium">Effortless & Simple</p>
+                </div>
+                {/* <Avatar
+                  className="bg-content2"
+                  icon={<Icon icon="solar:palette-linear" />}
+                /> */}
+              </div>
+              <p className="pt-4 text-small text-default-500">
                 Enjoy a seamless, distraction-free experience. Our intuitive
                 interface lets you focus on what matters—creating and sharing
                 amazing content, anywhere, on any device.
               </p>
-            </div>
-          </div>
+            </CardBody>
+            <CardFooter className="justify-between gap-2">
+              <Chip color="success" variant="dot">
+                User-Friendly
+              </Chip>
+            </CardFooter>
+          </Card>
         </div>
 
         {/* Additional showcase section */}
