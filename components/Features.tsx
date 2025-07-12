@@ -101,10 +101,10 @@ const Features = () => {
         </div>
 
         {/* Feature cards using HeroUI Card components */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 justify-items-center">
           {/* Feature 1 - Instant Results */}
           <Card
-            className="max-w-[320px] border-small border-default-100 p-3"
+            className="w-full max-w-[340px] border-small border-default-100 p-3"
             shadow="sm"
           >
             <CardBody className="px-4 pb-1">
@@ -132,7 +132,7 @@ const Features = () => {
 
           {/* Feature 2 - AI That Understands You */}
           <Card
-            className="max-w-[320px] border-small border-default-100 p-3"
+            className="w-full max-w-[340px] border-small border-default-100 p-3"
             shadow="sm"
           >
             <CardBody className="px-4 pb-1">
@@ -162,7 +162,7 @@ const Features = () => {
 
           {/* Feature 3 - Effortless & Beautiful */}
           <Card
-            className="max-w-[320px] border-small border-default-100 p-3"
+            className="w-full max-w-[340px] border-small border-default-100 p-3"
             shadow="sm"
           >
             <CardBody className="px-4 pb-1">
@@ -191,11 +191,11 @@ const Features = () => {
 
         {/* Interactive Demo Section */}
         <div className="mt-24 relative">
-          <Card className=" border-default-200 shadow-2xl relative overflow-hidden">
-            <div className="absolute -right-20 -top-20 w-64 h-64 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full blur-3xl animate-pulse" />
-            <div className="absolute -left-16 -bottom-16 w-48 h-48 bg-gradient-to-tr from-success/20 to-warning/20 rounded-full blur-2xl animate-pulse delay-1000" />
+          <Card className="w-full border-default-200 shadow-2xl relative overflow-hidden">
+            <div className="absolute -right-20 -top-20 w-64 h-64 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full blur-3xl animate-pulse hidden sm:block" />
+            <div className="absolute -left-16 -bottom-16 w-48 h-48 bg-gradient-to-tr from-success/20 to-warning/20 rounded-full blur-2xl animate-pulse delay-1000 hidden sm:block" />
 
-            <CardBody className="p-8 md:p-12 relative z-10">
+            <CardBody className="p-4 sm:p-8 md:p-12 relative z-10">
               <div className="text-center mb-8">
                 <Button
                   className="h-9 overflow-hidden border-3 border-default-100 bg-default-50 px-[18px] py-2 text-small font-normal leading-5 text-default-700"
@@ -212,7 +212,7 @@ const Features = () => {
               <div className="grid lg:grid-cols-2 gap-8 items-start">
                 {/* Input Section */}
                 <div className="space-y-6">
-                  <div className=" backdrop-blur-sm rounded-xl p-6 border border-default-200">
+                  <div className="w-full backdrop-blur-sm rounded-xl p-6 border border-default-200">
                     <h4 className="text-lg font-semibold mb-4 text-default-700">
                       Input
                     </h4>
@@ -224,7 +224,7 @@ const Features = () => {
                   </div>
 
                   {/* Platform Selector */}
-                  <div className=" rounded-xl p-6 border border-default-200">
+                  <div className="w-full rounded-xl p-6 border border-default-200">
                     <h4 className="text-lg font-semibold mb-4 text-default-700">
                       Choose Platform
                     </h4>
@@ -252,7 +252,7 @@ const Features = () => {
 
                 {/* Output Section with Typing Animation */}
                 <div className="space-y-6">
-                  <div className=" rounded-xl p-6 border border-default-200">
+                  <div className="w-full rounded-xl p-6 border border-default-200">
                     <div className="flex items-center justify-between mb-4">
                       <h4 className="text-lg font-semibold text-default-700">
                         Generated Content
@@ -266,8 +266,8 @@ const Features = () => {
                     </div>
 
                     {/* Typing Animation Output */}
-                    <div className=" rounded-lg p-4 min-h-[120px] relative">
-                      <div className="text-default-700 leading-relaxed">
+                    <div className="bg-default-50 rounded-lg p-4 relative">
+                      <div className="text-default-700 leading-relaxed h-[120px] overflow-y-auto">
                         {currentText}
                         {isTyping && (
                           <span className="inline-block w-0.5 h-5 bg-primary ml-1 animate-pulse" />
@@ -277,28 +277,28 @@ const Features = () => {
                       {!isTyping && currentText && (
                         <div className="absolute top-2 right-2">
                           <Button
+                            isIconOnly
                             size="sm"
                             variant="light"
-                            startContent={
-                              <Icon
-                                icon="solar:copy-linear"
-                                className="w-4 h-4"
-                              />
-                            }
-                            onClick={() =>
+                            onPress={() =>
                               navigator.clipboard.writeText(currentText)
                             }
                           >
-                            Copy
+                            <Icon
+                              className="w-5 h-5"
+                              icon="solar:copy-linear"
+                            />
                           </Button>
                         </div>
                       )}
                     </div>
 
                     {/* Content Stats */}
-                    <div className="mt-4 flex gap-4 text-sm text-default-500">
+                    <div className="mt-4 flex flex-wrap gap-4 text-sm text-default-500">
                       <span>Characters: {currentText.length}</span>
-                      <span>Words: {currentText.split(" ").length}</span>
+                      <span>
+                        Words: {currentText.split(" ").filter(Boolean).length}
+                      </span>
                       {currentPlatform.name === "Twitter" && (
                         <span
                           className={
@@ -307,7 +307,7 @@ const Features = () => {
                               : "text-success"
                           }
                         >
-                          Twitter Limit: {280 - currentText.length} remaining
+                          Limit: {280 - currentText.length}
                         </span>
                       )}
                     </div>
