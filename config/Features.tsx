@@ -13,7 +13,7 @@ import {
 import { Icon } from "@iconify/react";
 import React, { useState, useEffect } from "react";
 
-import { AcmeIcon } from "./social";
+import { AcmeIcon } from "../components/social";
 
 const Features = () => {
   const [selectedPlatform, setSelectedPlatform] = useState("Instagram");
