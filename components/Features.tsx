@@ -205,14 +205,14 @@ const Features = () => {
                   From Blank Page to Viral
                 </Button>
                 <h3 className="mt-3 text-3xl lg:text-4xl font-bold bg-gradient-to-r from-default-900 to-default-600 bg-clip-text text-transparent mb-4">
-                  See ContentCraft in Action
+                  ContentForge in Action
                 </h3>
               </div>
 
-              <div className="grid lg:grid-cols-2 gap-8 items-start">
+              <div className="grid lg:grid-cols-2 gap-8 items-start sm:grid-cols-1 ">
                 {/* Input Section */}
-                <div className="space-y-6">
-                  <div className="w-full backdrop-blur-sm rounded-xl p-6 border border-default-200">
+                <div className="space-y-3">
+                  <div className="w-full backdrop-blur-sm rounded-xl p-3 border border-default-200">
                     <h4 className="text-lg font-semibold mb-4 text-default-700">
                       Input
                     </h4>
