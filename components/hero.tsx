@@ -10,7 +10,7 @@ import FadeInImage from "./fade-in-image";
 
 export default function HeroSectionComponent() {
   return (
-    <div className="relative flex h-screen min-h-dvh w-full flex-col overflow-hidden bg-background mt-3 md:mt-4">
+    <div className="relative flex h-screen min-h-dvh w-full flex-col overflow-hidden bg-background md:mt-4">
       <BasicNavbar />
       <main className="container mx-auto mt-[40px] flex max-w-[1024px] flex-col items-start px-8">
         <section className="z-20 flex flex-col items-start justify-center gap-[18px] sm:gap-6">
