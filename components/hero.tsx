@@ -54,7 +54,7 @@ export default function HeroSectionComponent() {
                   type: "spring",
                 }}
               >
-                <div className="bg-gradient-to-br from-foreground to-foreground/60 bg-clip-text text-transparent">
+                <div className="text-black dark:bg-gradient-to-br dark:from-foreground dark:to-foreground/60 dark:bg-clip-text dark:text-transparent">
                   Content That Clicks. <br /> Strategy That Sticks.
                 </div>
               </m.div>
@@ -130,7 +130,7 @@ export default function HeroSectionComponent() {
         </AnimatePresence>
       </LazyMotion>
 
-      <div className="pointer-events-none absolute inset-0 top-[-25%] z-10 scale-150 select-none sm:scale-125">
+      <div className="pointer-events-none absolute inset-0 top-[-25%] z-10 scale-150 select-none sm:scale-125 hidden dark:block">
         <FadeInImage
           fill
           priority
