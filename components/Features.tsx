@@ -7,12 +7,78 @@ import {
   CardFooter,
   CardHeader,
   Chip,
+  Tabs,
+  Tab,
 } from "@heroui/react";
 import { Icon } from "@iconify/react";
-import React from "react";
+import React, { useState, useEffect } from "react";
+
 import { AcmeIcon } from "./social";
 
 const Features = () => {
+  const [selectedPlatform, setSelectedPlatform] = useState("Instagram");
+  const [currentText, setCurrentText] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
+
+  const platforms = [
+    {
+      name: "Instagram",
+      icon: "mdi:instagram",
+      color: "from-pink-500 to-purple-600",
+      content: {
+        input: "Launch new eco-friendly product line",
+        output:
+          "🌱 Excited to launch our new eco-friendly collection! ✨ Sustainable style meets modern design. Shop consciously, look amazing! 💚 #EcoFashion #Sustainable #NewDrop",
+      },
+    },
+    {
+      name: "Twitter",
+      icon: "mdi:twitter",
+      color: "from-blue-400 to-blue-600",
+      content: {
+        input: "Launch new eco-friendly product line",
+        output:
+          "🚀 Just dropped our eco-friendly collection! Sustainable meets stylish. The future of fashion is here. 🌍 #EcoFashion #Sustainability",
+      },
+    },
+    {
+      name: "LinkedIn",
+      icon: "mdi:linkedin",
+      color: "from-blue-600 to-blue-800",
+      content: {
+        input: "Launch new eco-friendly product line",
+        output:
+          "We're proud to announce the launch of our sustainable product line. As businesses, we have a responsibility to protect our planet while delivering exceptional value to customers. This collection represents our commitment to environmental stewardship and innovative design.",
+      },
+    },
+  ];
+
+  const currentPlatform =
+    platforms.find((p) => p.name === selectedPlatform) || platforms[0];
+
+  // Typing animation effect
+  useEffect(() => {
+    if (!currentPlatform) return;
+
+    setIsTyping(true);
+    setCurrentText("");
+
+    const text = currentPlatform.content.output;
+    let index = 0;
+
+    const timer = setInterval(() => {
+      if (index < text.length) {
+        setCurrentText(text.slice(0, index + 1));
+        index++;
+      } else {
+        setIsTyping(false);
+        clearInterval(timer);
+      }
+    }, 50);
+
+    return () => clearInterval(timer);
+  }, [selectedPlatform]);
+
   return (
     <section
       id="features"
@@ -123,54 +189,135 @@ const Features = () => {
           </Card>
         </div>
 
-        {/* Additional showcase section */}
-        <div className="mt-24 glass backdrop-blur-sm bg-[var(--card-bg)]/30 rounded-2xl p-8 border border-[var(--border-color)] shadow-lg relative overflow-hidden">
-          <div className="absolute -right-12 -top-12 w-40 h-40 bg-[var(--primary-color)]/10 rounded-full blur-2xl"></div>
-          <div className="absolute -left-12 -bottom-12 w-40 h-40 bg-[var(--accent-color)]/10 rounded-full blur-2xl"></div>
+        {/* Interactive Demo Section */}
+        <div className="mt-24 relative">
+          <Card className=" border-default-200 shadow-2xl relative overflow-hidden">
+            <div className="absolute -right-20 -top-20 w-64 h-64 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full blur-3xl animate-pulse" />
+            <div className="absolute -left-16 -bottom-16 w-48 h-48 bg-gradient-to-tr from-success/20 to-warning/20 rounded-full blur-2xl animate-pulse delay-1000" />
 
-          <div className="flex flex-col md:flex-row gap-10 items-center">
-            <div className="md:w-1/2">
-              <h3 className="text-2xl md:text-3xl font-bold mb-6 text-[var(--text-color)]">
-                Tailored for every platform
-              </h3>
-              <p className="text-[var(--text-light)] mb-6">
-                Our intelligent content creator understands the unique
-                characteristics of each social media platform, ensuring your
-                message resonates perfectly wherever it&apos;s shared.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                <span className="bg-[var(--primary-color)]/10 text-[var(--text-light)] text-sm py-1 px-3 rounded-full">
-                  Instagram
-                </span>
-                <span className="bg-[var(--primary-color)]/10 text-[var(--text-light)] text-sm py-1 px-3 rounded-full">
-                  Twitter
-                </span>
-                <span className="bg-[var(--primary-color)]/10 text-[var(--text-light)] text-sm py-1 px-3 rounded-full">
-                  LinkedIn
-                </span>
-                <span className="bg-[var(--primary-color)]/10 text-[var(--text-light)] text-sm py-1 px-3 rounded-full">
-                  Facebook
-                </span>
-                <span className="bg-[var(--primary-color)]/10 text-[var(--text-light)] text-sm py-1 px-3 rounded-full">
-                  TikTok
-                </span>
+            <CardBody className="p-8 md:p-12 relative z-10">
+              <div className="text-center mb-8">
+                <Button
+                  className="h-9 overflow-hidden border-3 border-default-100 bg-default-50 px-[18px] py-2 text-small font-normal leading-5 text-default-700"
+                  radius="full"
+                  variant="flat"
+                >
+                  From Blank Page to Viral
+                </Button>
+                <h3 className="mt-3 text-3xl lg:text-4xl font-bold bg-gradient-to-r from-default-900 to-default-600 bg-clip-text text-transparent mb-4">
+                  See ContentCraft in Action
+                </h3>
               </div>
-            </div>
-            <div className="md:w-1/2 bg-gradient-to-br from-[var(--primary-color)]/5 to-[var(--accent-color)]/5 rounded-xl p-6 border border-[var(--border-color)]">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-3 h-3 rounded-full bg-red-400"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-                <div className="w-3 h-3 rounded-full bg-green-400"></div>
-                <div className="h-5 w-40 bg-[var(--border-color)] rounded-md ml-auto"></div>
+
+              <div className="grid lg:grid-cols-2 gap-8 items-start">
+                {/* Input Section */}
+                <div className="space-y-6">
+                  <div className=" backdrop-blur-sm rounded-xl p-6 border border-default-200">
+                    <h4 className="text-lg font-semibold mb-4 text-default-700">
+                      Input
+                    </h4>
+                    <div className="bg-default-100 rounded-lg p-4">
+                      <p className="text-default-600 italic">
+                        "{currentPlatform.content.input}"
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Platform Selector */}
+                  <div className=" rounded-xl p-6 border border-default-200">
+                    <h4 className="text-lg font-semibold mb-4 text-default-700">
+                      Choose Platform
+                    </h4>
+                    <Tabs
+                      aria-label="Platform options"
+                      selectedKey={selectedPlatform}
+                      onSelectionChange={(key) =>
+                        setSelectedPlatform(key as string)
+                      }
+                    >
+                      {platforms.map((platform) => (
+                        <Tab
+                          key={platform.name}
+                          title={
+                            <div className="flex items-center gap-2">
+                              <Icon icon={platform.icon} className="w-4 h-4" />
+                              <span>{platform.name}</span>
+                            </div>
+                          }
+                        />
+                      ))}
+                    </Tabs>
+                  </div>
+                </div>
+
+                {/* Output Section with Typing Animation */}
+                <div className="space-y-6">
+                  <div className=" rounded-xl p-6 border border-default-200">
+                    <div className="flex items-center justify-between mb-4">
+                      <h4 className="text-lg font-semibold text-default-700">
+                        Generated Content
+                      </h4>
+                      <div
+                        className={`flex items-center gap-2 px-3 py-1 rounded-full text-sm bg-gradient-to-r ${currentPlatform.color} text-white`}
+                      >
+                        <Icon icon={currentPlatform.icon} className="w-4 h-4" />
+                        <span>{currentPlatform.name}</span>
+                      </div>
+                    </div>
+
+                    {/* Typing Animation Output */}
+                    <div className=" rounded-lg p-4 min-h-[120px] relative">
+                      <div className="text-default-700 leading-relaxed">
+                        {currentText}
+                        {isTyping && (
+                          <span className="inline-block w-0.5 h-5 bg-primary ml-1 animate-pulse" />
+                        )}
+                      </div>
+
+                      {!isTyping && currentText && (
+                        <div className="absolute top-2 right-2">
+                          <Button
+                            size="sm"
+                            variant="light"
+                            startContent={
+                              <Icon
+                                icon="solar:copy-linear"
+                                className="w-4 h-4"
+                              />
+                            }
+                            onClick={() =>
+                              navigator.clipboard.writeText(currentText)
+                            }
+                          >
+                            Copy
+                          </Button>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Content Stats */}
+                    <div className="mt-4 flex gap-4 text-sm text-default-500">
+                      <span>Characters: {currentText.length}</span>
+                      <span>Words: {currentText.split(" ").length}</span>
+                      {currentPlatform.name === "Twitter" && (
+                        <span
+                          className={
+                            currentText.length > 280
+                              ? "text-warning"
+                              : "text-success"
+                          }
+                        >
+                          Twitter Limit: {280 - currentText.length} remaining
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Generation Process Indicator */}
+                </div>
               </div>
-              <div className="space-y-3">
-                <div className="h-4 bg-[var(--border-color)] rounded-md w-full"></div>
-                <div className="h-4 bg-[var(--border-color)] rounded-md w-3/4"></div>
-                <div className="h-4 bg-[var(--border-color)] rounded-md w-5/6"></div>
-                <div className="h-4 bg-[var(--border-color)] rounded-md w-2/3"></div>
-              </div>
-            </div>
-          </div>
+            </CardBody>
+          </Card>
         </div>
       </div>
     </section>
