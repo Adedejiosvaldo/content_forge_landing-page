@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Button } from "@heroui/react";
+import { Button, Chip } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { AnimatePresence, LazyMotion, domAnimation, m } from "framer-motion";
 
@@ -22,6 +22,15 @@ export default function HeroSectionComponent() {
                 icon="solar:arrow-right-linear"
                 width={20}
               />
+            }
+            startContent={
+              <Chip
+                className="border-none text-default-500"
+                color="success"
+                variant="dot"
+              >
+                {/* <span className="text-small font-medium">Beta</span> */}
+              </Chip>
             }
             radius="full"
             variant="bordered"

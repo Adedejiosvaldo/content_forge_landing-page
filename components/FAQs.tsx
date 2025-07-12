@@ -8,7 +8,7 @@ import faqs from "@/config/faqs";
 
 export default function FAQcomponent() {
   return (
-    <section className="mx-auto w-full max-w-6xl py-20 sm:px-6 sm:py-32 lg:px-8 lg:py-40">
+    <section className="mx-auto w-full max-w-6xl py-10 sm:px-6 sm:py-32 lg:px-8 lg:py-14">
       <div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-6 lg:flex-row lg:items-start lg:gap-12">
         <h2 className="px-2 text-3xl leading-7">
           <span className="inline-block lg:hidden">FAQs</span>

@@ -28,7 +28,7 @@ export default function Footer() {
             </Chip>
           </div>
           <p className="text-center text-tiny text-default-400 md:text-start">
-            &copy; 2024 Acme Inc. All rights reserved.
+            &copy; {new Date().getFullYear()} ContentForge. All rights reserved.
           </p>
         </div>
       </div>
