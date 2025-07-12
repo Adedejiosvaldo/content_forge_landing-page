@@ -17,7 +17,6 @@ import {
   cn,
 } from "@heroui/react";
 import { Icon } from "@iconify/react";
-import { AcmeIcon } from "./social";
 import { ThemeSwitch } from "./theme-switch";
 import Image from "next/image";
 
